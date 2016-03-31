@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B1A43"
+    android:weightSum="4"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Google-SignIn for QUIZ"
+        android:id="@+id/textView"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:layout_toEndOf="@+id/google_icon"
+        android:layout_alignBottom="@+id/google_icon"
+        android:layout_below="@+id/sign_in_button"
+        android:textColor="#B6BAC6"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/q13">
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="visible"
+            tools:visibility="gone"
+            android:onClick="onClick" />
+        <LinearLayout
+            android:id="@+id/sign_out_and_disconnect"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:visibility="gone"
+            android:weightSum="2"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5" />
+
+            <Button
+                android:id="@+id/disconnect_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.83"
+                android:background="#7185BB"
+                android:text="disconnect"
+                android:textColor="@android:color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:layout_weight="0.15" />
+
+            <Button
+                android:id="@+id/sign_out_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.78"
+                android:text="sign_out"
+                android:background="#7185BB"
+                android:textColor="@android:color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton"
+                android:layout_alignBaseline="@+id/status"
+                android:layout_alignBottom="@+id/status"
+                android:layout_alignEnd="@+id/google_icon" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signed_out"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/abc_text_size_large_material"
+            android:layout_below="@+id/sign_out_and_disconnect"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
