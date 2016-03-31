@@ -23,7 +23,8 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/q13">
+        android:background="@drawable/q13"
+        android:padding="2dp">
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="wrap_content"
@@ -36,13 +37,15 @@
             android:id="@+id/sign_out_and_disconnect"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:orientation="horizontal"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:visibility="gone"
             android:weightSum="2"
-            tools:visibility="visible">
+            tools:visibility="visible"
+            android:layout_below="@+id/sign_in_button"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="72dp">
 
             <TextView
                 android:layout_width="25dp"
@@ -54,7 +57,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.83"
-                android:background="#7185BB"
+                android:background="#95db3a"
                 android:text="disconnect"
                 android:textColor="@android:color/white"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
@@ -71,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.78"
                 android:text="sign_out"
-                android:background="#7185BB"
+                android:background="#95db3a"
                 android:textColor="@android:color/white"
                 android:theme="@style/ThemeOverlay.MyDarkButton"
                 android:layout_alignBaseline="@+id/status"
@@ -88,6 +91,16 @@
             android:layout_below="@+id/sign_out_and_disconnect"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Go For Quiz  "
+            android:id="@+id/qz"
+            android:background="#cc7a37"
+            android:visibility="visible"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/status" />
 
     </RelativeLayout>
 

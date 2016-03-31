@@ -40,7 +40,7 @@ public class QuizOver extends Activity implements View.OnClickListener
         status = (TextView) findViewById(R.id.status);
         prfrmnc=(Button)findViewById(R.id.prfrm);
         prfrmnc.setOnClickListener(this);
-        Info.getInstance().finish();
+        //Info.getInstance().finish();
         Intent data = getIntent();
 
         status.setText((data.getExtras().get("status")).toString());
@@ -48,7 +48,13 @@ public class QuizOver extends Activity implements View.OnClickListener
         task = new HttpAsyncTask1().execute("http://192.168.21.207:8080/detailedPerformance");
     }
 
-    public static String GET(String url)
+      @Override
+      protected void onResume() {
+
+          super.onResume();
+          this.onCreate(null);
+      }
+      public static String GET(String url)
     {
         InputStream inputStream = null;
         String result = "";

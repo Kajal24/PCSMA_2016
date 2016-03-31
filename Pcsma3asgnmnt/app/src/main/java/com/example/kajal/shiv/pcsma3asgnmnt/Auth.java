@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +56,8 @@ public class Auth extends Activity implements
 
     String email="";
 
+      Button perfo,qz;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -62,6 +65,8 @@ public class Auth extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_file);
 
+        //perfo=(Button) findViewById(R.id.perfo);
+        qz=(Button) findViewById(R.id.qz);
         // Restore from saved instance state
         // [START restore_saved_instance_state]
         if (savedInstanceState != null)
@@ -75,6 +80,8 @@ public class Auth extends Activity implements
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
+        findViewById(R.id.qz).setOnClickListener(this);
+       // findViewById(R.id.perfo).setOnClickListener(this);
 
         // Large sign-in
         ((SignInButton) findViewById(R.id.sign_in_button)).setSize(SignInButton.SIZE_WIDE);
@@ -113,9 +120,11 @@ public class Auth extends Activity implements
 
                 if (emailparts[1].equals("iiitd.ac.in"))
                 {
-                     Intent intent = new Intent(Auth.this, MainActivity.class);
-                     intent.putExtra("email", email.toString());
-                     startActivity(intent);
+                   // findViewById(R.id.perfo).setVisibility(View.VISIBLE);
+                    findViewById(R.id.qz).setVisibility(View.VISIBLE);
+                     //Intent intent = new Intent(Auth.this, MainActivity.class);
+                     //intent.putExtra("email", email.toString());
+                     //startActivity(intent);
                     // finish();
                 }
                 else
@@ -140,6 +149,8 @@ public class Auth extends Activity implements
                 findViewById(R.id.sign_in_button).setEnabled(true);
                 findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
                 findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
+               // findViewById(R.id.perfo).setVisibility(View.GONE);
+                findViewById(R.id.qz).setVisibility(View.GONE);
 
 
             }
@@ -294,6 +305,18 @@ public class Auth extends Activity implements
                 case R.id.disconnect_button:
                     onDisconnectClicked();
                     break;
+                case R.id.qz:
+                    Intent intent = new Intent(Auth.this, MainActivity.class);
+                    intent.putExtra("email", email.toString());
+                    startActivity(intent);
+                    break;
+              /*  case R.id.perfo:
+                    Intent intent1 = new Intent(Auth.this, Performance.class);
+                    //intent1.putExtra("email", email.toString());
+                    startActivity(intent1);
+                    break;
+                    */
+
             }
         }
         catch(Exception e){}
