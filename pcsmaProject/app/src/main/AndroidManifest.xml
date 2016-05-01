@@ -22,10 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".Raspberry1"
             android:label="@string/title_activity_raspberry1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".health"
+            android:label="@string/title_activity_health"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

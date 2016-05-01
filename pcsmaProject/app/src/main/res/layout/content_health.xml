@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/p10"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.ricktam.pcsmaproject.health"
+    tools:showIn="@layout/activity_health">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="73dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="75dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HEALTH STATUS"
+                android:id="@+id/textView10"
+                android:textSize="25dp"
+                android:textColor="#1313fc"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="398dp"
+            android:layout_height="47dp"
+            android:id="@+id/noise"
+            android:background="#38f907"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="87dp"
+                android:layout_height="match_parent"
+                android:text="Noise Sensor"
+                android:id="@+id/textView11"
+                android:textSize="25dp"
+                android:background="#44fb06"
+                android:textStyle="bold"
+                android:layout_weight="0.37" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"></LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="373dp"
+            android:layout_height="45dp"
+            android:id="@+id/pollution"
+            android:background="#38f907"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="102dp"
+                android:layout_height="match_parent"
+                android:text="Pollution Sensor"
+                android:id="@+id/textView12"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_weight="0.36" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"></LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pi"
+            android:background="#38f907"
+            android:layout_weight="0.10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Raspberry PI Status"
+                android:id="@+id/textView13"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

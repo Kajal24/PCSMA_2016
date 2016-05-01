@@ -14,5 +14,6 @@
     <string name="error_null_person">Error</string>
     <string name="title_activity_quiz_over">QuizOver</string>
     <string name="str_tv_title">A Dynamic Graph</string>
+    <string name="title_activity_health">health</string>
 
 </resources>

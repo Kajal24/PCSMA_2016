@@ -107,7 +107,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="132dp"
-            android:layout_weight="0.17">
+            android:layout_weight="0.36">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -166,5 +166,47 @@
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="97dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.19"></LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HEALTH STATUS"
+                android:id="@+id/textView6"
+                android:textSize="15dp"
+                android:textColor="#f9f908"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="122dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check Health "
+                android:id="@+id/health"
+                android:background="#57fa2e" />
+
+        </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>
