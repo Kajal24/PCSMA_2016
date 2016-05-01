@@ -10,11 +10,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Google-SignIn for QUIZ"
+        android:text="PCSMA PROJECT Google SignIn"
         android:id="@+id/textView"
-        android:textSize="25dp"
+        android:textSize="17dp"
         android:textAlignment="center"
         android:layout_toEndOf="@+id/google_icon"
+        android:layout_toRightOf="@+id/google_icon"
         android:layout_alignBottom="@+id/google_icon"
         android:layout_below="@+id/sign_in_button"
         android:textColor="#B6BAC6"
@@ -23,7 +24,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/q13"
+        android:background="@drawable/p7"
         android:padding="2dp">
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
@@ -45,6 +46,7 @@
             tools:visibility="visible"
             android:layout_below="@+id/sign_in_button"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:layout_marginTop="72dp">
 
             <TextView
@@ -79,7 +81,8 @@
                 android:theme="@style/ThemeOverlay.MyDarkButton"
                 android:layout_alignBaseline="@+id/status"
                 android:layout_alignBottom="@+id/status"
-                android:layout_alignEnd="@+id/google_icon" />
+                android:layout_alignEnd="@+id/google_icon"
+                android:layout_alignRight="@+id/google_icon"/>
         </LinearLayout>
         <TextView
             android:id="@+id/status"
@@ -95,25 +98,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="  Go For Quiz  "
+            android:text="  Installed Location  "
             android:id="@+id/qz"
-            android:background="#cc7a37"
+            android:background="#61fa42"
             android:visibility="visible"
-            android:layout_marginTop="106dp"
+            android:layout_marginTop="133dp"
             android:layout_below="@+id/status"
-            android:layout_alignEnd="@+id/status"
-            android:layout_marginEnd="60dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Performance "
-            android:id="@+id/perfo"
-            android:background="#cc7a37"
-            android:visibility="gone"
-            android:layout_alignTop="@+id/qz"
-            android:layout_alignStart="@+id/status"
-            android:layout_marginStart="60dp" />
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

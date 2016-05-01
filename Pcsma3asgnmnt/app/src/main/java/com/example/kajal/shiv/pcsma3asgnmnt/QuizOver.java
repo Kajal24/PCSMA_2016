@@ -29,6 +29,7 @@ public class QuizOver extends Activity implements View.OnClickListener
     AsyncTask<String, Void, String> task;
       Button prfrmnc;
       String email;
+      String check;
       ArrayList<Integer> rInt;
       ArrayList<Integer> qidd;
 
@@ -42,10 +43,25 @@ public class QuizOver extends Activity implements View.OnClickListener
         prfrmnc.setOnClickListener(this);
         //Info.getInstance().finish();
         Intent data = getIntent();
+        try {
 
-        status.setText((data.getExtras().get("status")).toString());
-        email=(data.getExtras().get("email")).toString();
-        task = new HttpAsyncTask1().execute("http://192.168.21.207:8080/detailedPerformance");
+            status.setText((data.getExtras().get("status")).toString());
+            email=(data.getExtras().get("email")).toString();
+
+       // task = new HttpAsyncTask1().execute("http://192.168.21.207:8080/detailedPerformance");
+
+           /* check=(data.getExtras().get("verified")).toString();
+        if(check.equals("gotoPerformance")){
+            Intent Main2Activity = new Intent(QuizOver.this, Performance.class);
+            Main2Activity.putExtra("result", rInt);
+            Main2Activity.putExtra("qid", qidd);
+            startActivity(Main2Activity);
+            finish();
+        }*/
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
       @Override
@@ -54,7 +70,7 @@ public class QuizOver extends Activity implements View.OnClickListener
           super.onResume();
           this.onCreate(null);
       }
-      public static String GET(String url)
+     /* public static String GET(String url)
     {
         InputStream inputStream = null;
         String result = "";
@@ -172,7 +188,7 @@ public class QuizOver extends Activity implements View.OnClickListener
             //timer = 0;
             //ques = null;
         }
-    }
+    }*/
 
       @Override
       public void onClick(View v)
@@ -180,8 +196,9 @@ public class QuizOver extends Activity implements View.OnClickListener
           if (v == prfrmnc)
           {
               Intent Main2Activity = new Intent(QuizOver.this, Performance.class);
-              Main2Activity.putExtra("result", rInt);
-              Main2Activity.putExtra("qid", qidd);
+              Main2Activity.putExtra("email", email);
+              //Main2Activity.putExtra("result", rInt);
+             // Main2Activity.putExtra("qid", qidd);
               startActivity(Main2Activity);
               //finish();
           }

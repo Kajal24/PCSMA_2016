@@ -65,7 +65,7 @@ public class Auth extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_file);
 
-        //perfo=(Button) findViewById(R.id.perfo);
+        perfo=(Button) findViewById(R.id.perfo);
         qz=(Button) findViewById(R.id.qz);
         // Restore from saved instance state
         // [START restore_saved_instance_state]
@@ -81,7 +81,7 @@ public class Auth extends Activity implements
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
         findViewById(R.id.qz).setOnClickListener(this);
-       // findViewById(R.id.perfo).setOnClickListener(this);
+        findViewById(R.id.perfo).setOnClickListener(this);
 
         // Large sign-in
         ((SignInButton) findViewById(R.id.sign_in_button)).setSize(SignInButton.SIZE_WIDE);
@@ -120,7 +120,7 @@ public class Auth extends Activity implements
 
                 if (emailparts[1].equals("iiitd.ac.in"))
                 {
-                   // findViewById(R.id.perfo).setVisibility(View.VISIBLE);
+                    findViewById(R.id.perfo).setVisibility(View.VISIBLE);
                     findViewById(R.id.qz).setVisibility(View.VISIBLE);
                      //Intent intent = new Intent(Auth.this, MainActivity.class);
                      //intent.putExtra("email", email.toString());
@@ -149,7 +149,7 @@ public class Auth extends Activity implements
                 findViewById(R.id.sign_in_button).setEnabled(true);
                 findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
                 findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
-               // findViewById(R.id.perfo).setVisibility(View.GONE);
+                findViewById(R.id.perfo).setVisibility(View.GONE);
                 findViewById(R.id.qz).setVisibility(View.GONE);
 
 
@@ -310,12 +310,14 @@ public class Auth extends Activity implements
                     intent.putExtra("email", email.toString());
                     startActivity(intent);
                     break;
-              /*  case R.id.perfo:
+               case R.id.perfo:
                     Intent intent1 = new Intent(Auth.this, Performance.class);
-                    //intent1.putExtra("email", email.toString());
+                   // intent1.putExtra("verified", "gotoPerformance");
+                   intent1.putExtra("email", email.toString());
+                   intent1.putExtra("status", "CHECK YOUR PERFORMANCE ");
                     startActivity(intent1);
                     break;
-                    */
+
 
             }
         }

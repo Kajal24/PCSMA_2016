@@ -50,8 +50,12 @@ public class Info extends Activity implements View.OnClickListener
      private String resultCheck=null;
      static  Info info;
      TextView _tv;
+     private int timenew=0;
+     private int time=0;
 
-     MyCounter timern;
+     MyCounter timern,timern1;
+     private Handler mHandler;
+
      protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -61,7 +65,7 @@ public class Info extends Activity implements View.OnClickListener
         rollno = (TextView) findViewById(R.id.rollno);
         email = (TextView) findViewById(R.id.email);
         qt=(TextView) findViewById(R.id.question);
-        int time=0;
+
         info = this;
         try
         {
@@ -96,8 +100,43 @@ public class Info extends Activity implements View.OnClickListener
         timern=new MyCounter(time*60*1000, 1000);
         timern.start();
 
+
         //timer(time);
+        this.mHandler = new Handler();
+
+        this.mHandler.postDelayed(m_Runnable, 2000);
     }
+
+     private final Runnable m_Runnable = new Runnable()
+     {
+         public void run()
+
+         {
+             timenew=timer;
+             String x= String.valueOf(timenew);
+            Toast.makeText(Info.this,x,Toast.LENGTH_SHORT).show();
+
+             if(timenew!=time){
+                 timern.cancel();
+                 timern=new MyCounter(timenew*60*1000, 1000);
+                 timern.start();
+                 //timern.cancel();
+                 time=timenew;
+             }
+             task = new HttpAsyncTask1().execute("http://192.168.21.207:8080/quizdetails");
+             Info.this.mHandler.postDelayed(m_Runnable, 2000);
+         }
+
+
+     };//runnable
+
+     @Override
+     protected void onStop() {
+         super.onStop();
+         mHandler.removeCallbacks(m_Runnable);
+         //timern1.cancel();
+         timern.cancel();
+     }
      public static Info getInstance(){
          return   info;
      }
@@ -337,13 +376,14 @@ public class Info extends Activity implements View.OnClickListener
          @Override
          protected void onPostExecute(final String result)
          {
-             Runnable r = new Runnable()
-             {
-                 @Override
-                 public void run()
-                 {
+            // Runnable r = new Runnable()
+            // {
+               //  @Override
+               //  public void run()
+               //  {
                      try
                      {
+
                          ////////////////////////////String Parsing////////////////////
                          //String str="{\"qid\":12,\"ques\":\"Question you know?\",\"timer\":1,\"answer\":\"NA\"}";
                          String[] commaSplit = result.split(",");
@@ -355,7 +395,7 @@ public class Info extends Activity implements View.OnClickListener
                          // Toast.makeText(getBaseContext(),+"--"+timer[1], Toast.LENGTH_LONG).show();
                          ////////////////////////////////////////////////
                          // Toast.makeText(getBaseContext(), result, Toast.LENGTH_SHORT).show();
-                         if(ques.equals(null) && timer==0)
+                        /* if(ques.equals(null) && timer==0)
                          {
                              //Thread.currentThread().stop();
                              task.cancel(true);
@@ -367,20 +407,37 @@ public class Info extends Activity implements View.OnClickListener
                              finish();
                              //btnSubmit.setEnabled(false);
                              //done.setEnabled(true);
-                         }
+                         }*/
                      }
                      catch (Exception e)
                      {
                          timer = 0;
                          ques = null;
+                        // if(result.equals(null))
+                         //{
+                             //Thread.currentThread().stop();
+                         //task.cancel(true);
+                         timern.cancel();
+                         //timern1.cancel();
+
+                         Intent Main2Activity = new Intent(Info.this, QuizOver.class);
+                         Main2Activity.putExtra("email", email.getText().toString());
+                         Main2Activity.putExtra("status", "TIMEOUT! QUIZ IS OVER !! ");
+                         Main2Activity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                         startActivity(Main2Activity);
+                         finish();
+                             //btnSubmit.setEnabled(false);
+                             //done.setEnabled(true);
+                        // }
+
                      }
-                     if(!isCancelled())
-                     task= new HttpAsyncTask1().execute("http://192.168.21.207:8080/quizdetails");
-                 }
-             };
-             Handler h = new Handler();
-             h.postDelayed(r, 1000);
-         }
+                    // if(!isCancelled())
+                    // task= new HttpAsyncTask1().execute("http://192.168.21.207:8080/quizdetails");
+               }
+            // };
+            // Handler h = new Handler();
+            // h.postDelayed(r, 1000);
+        // }
          @Override
          protected void onCancelled()
          {
@@ -429,20 +486,28 @@ public class Info extends Activity implements View.OnClickListener
             // call AsynTask to perform network operation on separate thread
             new HttpAsyncTask().execute("http://192.168.21.207:8080/quizpath");
             // Get Selected Radio Button and display output
-            selectRadio = (RadioButton) findViewById(rgOpinion.getCheckedRadioButtonId());
-            String opinion = selectRadio.getText().toString();
-            task.cancel(true);
-            timern.cancel();
+            try {
+                selectRadio = (RadioButton) findViewById(rgOpinion.getCheckedRadioButtonId());
+                String opinion = selectRadio.getText().toString();
+                Toast.makeText(this, "Your option is : " + opinion, Toast.LENGTH_LONG).show();
+                task.cancel(true);
+                timern.cancel();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            //timern1.cancel();
             //timer(0);
             Intent Main2Activity = new Intent(Info.this, QuizOver.class);
             Main2Activity.putExtra("email", email.getText().toString());
             Main2Activity.putExtra("status", "QUIZ IS OVER !! ");
+            Main2Activity.putExtra("verified", "nogotoPerformance");
             Main2Activity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(Main2Activity);
             finish();
            // btnSubmit.setEnabled(false);
             //done.setEnabled(true);
-            Toast.makeText(this, "Your option is : " + opinion, Toast.LENGTH_LONG).show();
+
         }
     }
 }
